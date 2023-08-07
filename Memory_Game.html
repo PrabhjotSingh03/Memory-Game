@@ -5,65 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memory Game</title>
     <link rel="stylesheet" type="text/css" href="/style/style.css" />
+    
 </head>
 <body>
     <header><h1>Memory Image Matching Game</h1></header>
-    
-      <section class="main">
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-        <div class="box play"></div>
-      
-        <div id="state">
-          <span id="time">0</span>
-          <span id="score">0</span>
-        </div>
-      </section>
-      
-      
-      <section id="pre" class="">
-        <div id="themes">
-          <h2>Choose your theme !</h2>
-          <p id="pokemon" class="themes" title="Pokemon">Pokemon</p>
-          <p id="starwars" class="themes" title="Star Wars">Star Wars</p>
-          <p id="lotr" class="themes" title="Lord of the Ring">Lord of the Ring</p>
-          <p id="disney" class="themes" title="Disney">Disney</p>
-          <p id="pixar" class="themes" title="Pixar">Pixar</p>
-          <p id="harrypotter" class="themes" title="Harry Potter">Harry Potter</p>
-        </div>
-      </section>
-      
-      <section id="post" class="hidden">
-        <div>
-          <h2>BRAVO !</h2>
-          <p id="final"></p>
-          <br>
-          <p>
-            <a id="again">Play Again !</a>
-          </p>
-        </div>
-      </section>
-
-      
-      <footer>
-        <p>Created by: Prabhjot Singh</p>
-      </footer>
+    <section class="gameBoard" class="hidden">
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div class="img flip"></div>
+      <div id="status">
+        <span id="score">0</span>
+        <span id="time">0</span>
+      </div>
+    </section>
+    <section id="result" class="hidden">
+      <div>
+        <h2>You Won...!</h2>
+        <p id="resultFinal"></p>
+        <p><a id="playAgain">Want to Play Again...!</a></p>
+      </div>
+    </section>
+    <section id="selection">
+      <div id="movies">
+        <h2>Choose your theme !</h2>
+          <p id="avengers" class="movies">Avengers</p>
+          <p id="starwars" class="movies" >Star Wars</p>
+          <p id="lotr" class="movies" >Lord of the Ring</p>
+          <p id="disney" class="movies" >Disney</p>
+      </div>
+    </section>
+    <footer>
+      <p>Prabhjot Singh</p>
+    </footer>   
+    <script src="/script/script.js"></script>
 </body>
 </html>
