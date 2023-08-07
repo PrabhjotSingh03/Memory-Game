@@ -1,5 +1,5 @@
 
-    var library = {
+    var lib = {
       avengers: [
         'https://c4.wallpaperflare.com/wallpaper/293/952/22/iron-man-marvel-comics-superhero-the-avengers-wallpaper-preview.jpg',
         'https://c4.wallpaperflare.com/wallpaper/719/640/12/marvel-comics-the-avengers-spider-man-avengers-infinity-war-wallpaper-preview.jpg',
@@ -89,16 +89,14 @@
         'https://res.cloudinary.com/beumsk/image/upload/v1547999577/memory/harrypotter/neville.jpg'
       ]
     };
-    
     var images = [];
-    var tempElt1 = "";
-    var tempElt2 = "";
+    var temp1 = "";
+    var temp2 = "";
     var click = -1;
     var win = 0;
     var score = 0;
     var time = 0;
     var timer;
-
     var selection = document.getElementById("selection");
     var movies = document.getElementById("movies");
     var img = document.getElementsByClassName("img");
@@ -109,17 +107,16 @@
     var resultFinal = document.getElementById("resultFinal");
     var playAgain = document.getElementById("playAgain");
     
-    movies.addEventListener("click", function (e) {
-      if (e.target.classList.contains("movies")) {
-        activateTheme(e.target.id);
+    movies.addEventListener("click", function (a) {
+      if (a.target.classList.contains("movies")) {
+        activateMovie(a.target.id);
         selection.classList.add("hidden");
         gameBoard.classList.remove("hidden");
       }
     });
-    
-    function activateTheme(theme) {
+    function activateMovie(movie) {
       for (let i = 0; i < 20; i++) {
-        images.push(library[theme][i]);
+        images.push(lib[movie][i]);
       }
     
       for (let i = 0; i < 20; i++) {
@@ -128,12 +125,10 @@
         images.splice(rand, 1);
       }
     }
-  
     gameBoard.addEventListener("click", gameLogic);
-    
-    function gameLogic(e) {
-      if (e.target.classList.contains("flip")) {
-        e.target.firstChild.classList.remove("hidden");
+    function gameLogic(a) {
+      if (a.target.classList.contains("flip")) {
+        a.target.firstChild.classList.remove("hidden");
         if (click < 1) {
           if (click === -1) {
             timer = setInterval(function () {
@@ -142,14 +137,16 @@
             }, 1000);
           }
           click = 1;
-          tempElt1 = e.target; // Move assignment here to avoid issues
-        } else if (e.target !== tempElt1) {
-          tempElt2 = e.target;
-          if (tempElt1.firstChild.src !== tempElt2.firstChild.src) {
+          temp1 = a.target;
+        } 
+        else if 
+        (a.target !== temp1) {
+          temp2 = a.target;
+          if (temp1.firstChild.src !== temp2.firstChild.src) {
             gameBoard.removeEventListener("click", gameLogic);
             setTimeout(function () {
-              tempElt1.firstChild.classList.add("hidden");
-              tempElt2.firstChild.classList.add("hidden");
+              temp1.firstChild.classList.add("hidden");
+              temp2.firstChild.classList.add("hidden");
               gameBoard.addEventListener("click", gameLogic);
             }, 400);
             if (score > 0) {
@@ -159,15 +156,14 @@
           } else {
             score += 10;
             win += 2;
-            tempElt1.firstChild.classList.add("outline");
-            tempElt2.firstChild.classList.add("outline");
-            tempElt1.classList.remove("flip");
-            tempElt2.classList.remove("flip");
+            temp1.firstChild.classList.add("outline");
+            temp2.firstChild.classList.add("outline");
+            temp1.classList.remove("flip");
+            temp2.classList.remove("flip");
             score.innerHTML = score;
-    
             if (win === 20) {
               clearInterval(timer);
-              resultFinal.innerHTML = "You won " + score + " points <br> in " + time + " seconds";
+              resultFinal.innerHTML = "You won in " + time + " seconds <br> " + score + "points ";
               result.classList.remove("hidden");
             }
           }
@@ -175,28 +171,22 @@
         }
       }
     }
-    
     playAgain.addEventListener("click", resetGame);
-    
     function resetGame() {
-      tempElt1 = "";
-      tempElt2 = "";
+      temp1 = "";
+      temp2 = "";
       click = -1;
       win = 0;
       score = 0;
       time = 0;
       clearInterval(timer);
       result.classList.add("hidden");
-      gameBoard.classList.add("hidden"); // Hide the main section
-      selection.classList.remove("hidden"); // Show the selection menu
+      gameBoard.classList.add("hidden");
+      selection.classList.remove("hidden"); 
       for (let i = 0; i < 20; i++) {
         img[i].classList.add("flip");
         img[i].firstChild.classList.add("hidden");
       }
       gametime.textContent = time;
-      gamescore.textContent = score; // Use scoreElement to update the score
+      gamescore.textContent = score;
     }
-    
-    
-    
-    
