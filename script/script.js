@@ -106,7 +106,10 @@
     var result = document.getElementById("result");
     var resultFinal = document.getElementById("resultFinal");
     var playAgain = document.getElementById("playAgain");
-    
+    var countdownTime = 40; // Initial countdown time
+    var gameWon = false;
+    var gameLost = false;
+
     movies.addEventListener("click", function (a) {
       if (a.target.classList.contains("movies")) {
         activateMovie(a.target.id);
@@ -132,13 +135,20 @@
         if (click < 1) {
           if (click === -1) {
             timer = setInterval(function () {
-              time++;
-              gametime.innerHTML = time;
+              if (countdownTime > 0) {
+                countdownTime--;
+                gametime.innerHTML = countdownTime;
+              } else {
+                clearInterval(timer);
+                if (!gameWon) {
+                  showGameOver(); // Call the function to display "Game Over"
+                }
+              }
             }, 1000);
           }
           click = 1;
           temp1 = a.target;
-        } 
+        }  
         else if 
         (a.target !== temp1) {
           temp2 = a.target;
@@ -163,7 +173,8 @@
             score.innerHTML = score;
             if (win === 20) {
               clearInterval(timer);
-              resultFinal.innerHTML = "You won in " + time + " seconds <br> " + score + "points ";
+              gameWon = true; // Set the flag to indicate game won
+              resultFinal.innerHTML = "You win " + "with " + score + " points ";
               result.classList.remove("hidden");
             }
           }
@@ -171,6 +182,11 @@
         }
       }
     }
+    function showGameOver() {
+      resultFinal.innerHTML = "You lost"; // Display "You lost" in the result section
+      result.classList.remove("hidden");
+    }    
+
     playAgain.addEventListener("click", resetGame);
     function resetGame() {
       temp1 = "";
