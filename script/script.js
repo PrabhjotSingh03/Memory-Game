@@ -105,7 +105,7 @@ var gamescore = document.getElementById("score");
 var result = document.getElementById("result");
 var resultFinal = document.getElementById("resultFinal");
 var playAgain = document.getElementById("playAgain");
-var countdownTime = 30; // Initial countdown time
+var countdownTime = 35; // Initial countdown time
 var gameWon = false;
 var gameLost = false;
 
@@ -194,7 +194,7 @@ playAgain.addEventListener("click", resetGame);
     click = -1;
     win = 0;
     score = 0;
-    countdownTime = 30; // Reset the countdown time
+    countdownTime = 35; // Reset the countdown time
     clearInterval(timer);
     result.classList.add("hidden");
     gameBoard.classList.add("hidden");
