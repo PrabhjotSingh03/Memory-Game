@@ -106,7 +106,7 @@
     var result = document.getElementById("result");
     var resultFinal = document.getElementById("resultFinal");
     var playAgain = document.getElementById("playAgain");
-    var countdownTime = 40; // Initial countdown time
+    var countdownTime = 30; // Initial countdown time
     var gameWon = false;
     var gameLost = false;
 
@@ -183,6 +183,7 @@
       }
     }
     function showGameOver() {
+      clearInterval(timer);
       resultFinal.innerHTML = "You lost"; // Display "You lost" in the result section
       result.classList.remove("hidden");
     }    
@@ -194,7 +195,7 @@
       click = -1;
       win = 0;
       score = 0;
-      time = 0;
+      countdownTime = 30; // Reset the countdown time
       clearInterval(timer);
       result.classList.add("hidden");
       gameBoard.classList.add("hidden");
@@ -203,6 +204,6 @@
         img[i].classList.add("flip");
         img[i].firstChild.classList.add("hidden");
       }
-      gametime.textContent = time;
+      gametime.textContent = countdownTime; // Update the time display
       gamescore.textContent = score;
     }
